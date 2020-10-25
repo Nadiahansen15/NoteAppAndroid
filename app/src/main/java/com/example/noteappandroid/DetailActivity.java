@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DetailActivity extends AppCompatActivity {
+import com.example.noteappandroid.global.Global;
+import com.example.noteappandroid.model.Note;
 
+public class DetailActivity extends AppCompatActivity {
+    private Note currentNote;
     public String txt;
 
     @Override
@@ -18,11 +21,15 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        TextView myDetailTextView = findViewById(R.id.textview);
+        currentNote = (Note) Global.map.get(Global.NOTE_KEY);
+        myDetailTextView.setText(currentNote.getTitle());
+    }
+
         /*TextView textView = findViewById(R.id.textview);
 
         String txt = getIntent().getStringExtra("text");
         textView.setText(txt);
-        */
 
         EditText textView = findViewById(R.id.textview);
         Intent intent = getIntent();
@@ -39,6 +46,6 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
+    }*/
 
 }

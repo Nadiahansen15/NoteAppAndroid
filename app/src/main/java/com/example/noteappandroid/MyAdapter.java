@@ -7,21 +7,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.noteappandroid.model.Note;
+
+import java.util.List;
+
 public class MyAdapter extends BaseAdapter {
-    private String[] title;
-    private String[] text;
+    private List<Note> data; // husk hintet
+    //private String[] text;
     private LayoutInflater layoutInflater;
 
-    public MyAdapter(Context context, String[] title, String[] text) {
-        this.title = title;
-        this.text = text;
-        layoutInflater = LayoutInflater.from(context); // står med stort fordi det er en statisk metode
-
+    public MyAdapter(Context context, List<Note> data/*, String[] text*/) {
+        this.data = data;
+        //this.text = text;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return title.length;
+        return data.size();
     }
 
     @Override
@@ -35,17 +38,14 @@ public class MyAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
-        if(view == null) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        if(view == null){
             view = layoutInflater.inflate(R.layout.myrow, null);
-
         }
-
         TextView textView = view.findViewById(R.id.MytextView);
-        textView.setText(title[i]);
-        //TextView text2 = view.findViewById(R.id.textview);
-        //text2.setText(text[i]);
-
+        textView.setText(data.get(i).getTitle());
+//        ImageView imageView = view.findViewById(R.id.myImageView);
+//        imageView.setImageResource(images[i]);
         return view;
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NoteAppAndroid</string>
+    <string name="add_note">Add Note</string>
+    <string name="textview">TextView</string>
 </resources>
